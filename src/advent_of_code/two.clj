@@ -13,10 +13,10 @@
 (defn parse-packages [ pss ]
   (map parse-package (clojure.string/split pss #"\n")))
 
-(defn challenge-1 [ pss ]
-  (reduce + (map package-area (parse-packages pss))))
+(defn challenge-1 "Given a list of package dimensions, determine the wrapping paper neded"
+  [ pss ] (reduce + (map package-area (parse-packages pss))))
 
-;; Day 2, challenge 2
+;; Day 2, challenge 1
 (challenge-1 (slurp "resources/two.txt"))
 
 (defn package-perrimeters [[ph pw pd]]
@@ -27,8 +27,8 @@
 (defn ribbon-amount [p]
   (+ (package-volume p) (apply min (package-perrimeters p))))
 
-(defn challenge-2 [ pss ]
-  (reduce + (map ribbon-amount (parse-packages pss))))
+(defn challenge-2 "Given a list of package dimensions, determine the ribbon needed"
+  [ pss ] (reduce + (map ribbon-amount (parse-packages pss))))
 
 ;; Day 2, challenge 2
 (challenge-2 (slurp "resources/two.txt"))
